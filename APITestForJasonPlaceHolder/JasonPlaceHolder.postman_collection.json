@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "d7809b1e-133f-4908-afa4-ea12a0373621",
+		"name": "JasonPlaceHolder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "8671757"
+	},
+	"item": [
+		{
+			"name": "Get user request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify number of users is 10\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(10);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://jsonplaceholder.typicode.com/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Verify GET User request by Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify if user with id8 is Nicholas Runolfsdottir V\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData.name).to.eql(\"Nicholas Runolfsdottir V\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://jsonplaceholder.typicode.com/users/8"
+			},
+			"response": []
+		},
+		{
+			"name": "Verify POST Users request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Verify that the posted data are showing up in the result\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Sarika Test\");\r",
+							"    pm.expect(jsonData.address.street).to.eql(\"8/12 Arabi Street\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":11,\r\n    \"name\": \"Sarika Test\",\r\n    \"username\": \"Maxime_Nienow\",\r\n    \"email\": \"Sherwood@rosamond.me\",\r\n    \"address\": {\r\n        \"street\": \"8/12 Arabi Street\",\r\n        \"suite\": \"Suite 729\",\r\n        \"city\": \"Aliyaview\",\r\n        \"zipcode\": \"45169\",\r\n        \"geo\": {\r\n            \"lat\": \"-14.3990\",\r\n            \"lng\": \"-120.7677\"\r\n        }\r\n    },\r\n    \"phone\": \"999999999\",\r\n    \"website\": \"jacynthe.com\",\r\n    \"company\": {\r\n        \"name\": \"Test\",\r\n        \"catchPhrase\": \"Implemented secondary concept\",\r\n        \"bs\": \"e-enable extensible e-tailers\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://jsonplaceholder.typicode.com/users"
+			},
+			"response": []
+		}
+	]
+}
